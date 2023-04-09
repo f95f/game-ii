@@ -1,0 +1,57 @@
+body{  
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+    
+main{
+    width: 600px;
+    height: 600px;
+    background-color: red;
+    margin: auto;
+    padding: 20px;
+
+}
+
+#container-menu{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.item{
+}
+button{
+    height: 100%;
+    width: 100%;
+    background-color: aqua; 
+
+}
+
+#addButton{
+    background-color: cyan;
+}
+#subButton{
+    background-color: lime;
+}
+#multButton{
+    background-color: yellow;
+}
+#divButton{
+    background-color: magenta;
+}
+
+@media(max-width: 600px){
+
+    main{
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+}
