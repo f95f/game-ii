@@ -1,26 +1,8 @@
 let loadGame = function(operation){
 
-    switch(operation){
+    sessionStorage.setItem("gameMode", operation);
+    window.location.href = "game.html";
 
-        case 'add':
-            alert(operation);
-            window.location.href = "game.html";
-        break;
-            
-        case 'sub':
-                alert(operation);
-                // do shit
-        break;
-                
-        case 'mult':
-                    alert(operation);
-                    
-        break;
-                    
-        case 'div':
-            alert(operation);
-            // do shit
-        break;
-    }
+
 
 }

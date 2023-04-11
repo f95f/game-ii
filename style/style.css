@@ -16,6 +16,8 @@ main{
 
 }
 
+/* ~~ Página Inicial ~~ */
+
 #container-menu{
     height: 100%;
     display: grid;
@@ -30,7 +32,6 @@ button{
     height: 100%;
     width: 100%;
     background-color: aqua; 
-
 }
 
 #addButton{
@@ -46,6 +47,61 @@ button{
     background-color: magenta;
 }
 
+/* ~~ Base ~~ */
+#container-game{
+    background-color: lime;
+}
+#container-game div{
+    width: 100%;
+}
+
+#container-head{
+    background-color: aqua;
+    height: 100%
+
+}
+#score{
+    height: 25px;
+    background-color: deeppink;
+}
+#lifebar{
+    height: 5px;
+    background-color: pink;
+}
+
+#container-show{
+    background-color: brown;
+    height: 50%;
+}
+#question{
+    height: 200px;
+    background-color: cyan;
+}
+#timer{
+    height: 5px;
+    background-color: magenta;
+    
+}
+#answers{
+    height: 100px;
+    background-color: yellowgreen;
+
+}
+
+#container-foot{
+    background-color: blueviolet;
+    width: 100px;
+    height: 100px;
+}
+#answerStatus{
+    height: 20px;
+    background-color: whitesmoke;
+}
+#finalizar{
+    height: 50px;
+    background-color: darkcyan;
+
+}
 @media(max-width: 600px){
 
     main{
