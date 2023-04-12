@@ -13,32 +13,86 @@
         <div id = "container-game">
             
             <div id = "container-head">
-                <div id="score"></div>
+
+                <div id="score-row">
+
+                    <div id="score-area">
+                        <h2>Pontos</h2>
+                        <span id = "score">0</span>
+                    </div>
+
+                    <div id="level-area">
+                        <h2>Nível</h2>
+                        <span id = "level">0</span>
+                    </div>
+
+                </div>
+
                 <h1>
                     Teste suas habilidades com <span id = "title-operation"></span>!
                 </h1>
+                
                 <p>Escolha a resposta correta para as operações abaixo:</p>
-                <div id="lifebar"></div>
+
+                <div id="lifebar">
+
+                    <div id="lifebar-area">
+
+                        <div class="life"></div>
+                        <div class="life"></div>
+                        <div class="life"></div>
+                        <div class="life"></div>
+                        <div class="life"></div>
+                        <div class="life-empty"></div>
+                        <div class="life-empty"></div>
+                        <div class="life-empty"></div>
+                        <div class="life-empty"></div>
+                        <div class="life-empty"></div>
+
+                    </div>
+
+                </div>
             </div>
 
             <div id = "container-show">
+
                 <div id="question">
 
-                </div>
-                <div id="timer">
+                    <span class="question-item">0</span>
+                    <span id="operation-symbol">X</span>
+                    <span class="question-item">0</span>
 
                 </div>
+
+                <div id="timer">
+                   
+                    <div id="timebar">    
+                        <div id="timebar-filled"></div>
+                    </div>
+                
+                </div>
+
                 <div id="answers">
+
+                    <div class="answer-item">0</div>
+                    <div class="answer-item">0</div>
+                    <div class="answer-item">0</div>
+                    <div class="answer-item">0</div>
+                    <div class="answer-item">0</div>
 
                 </div>
             </div>
             
             <div id = "container-foot">
-                <div id = "answerStatus">
-                    
+
+                <div id = "answer-status-row">
+                    <span id="correct">
+                        Correto!
+                    </span>
                 </div>
+
                 <div id = "finalizar">
-                    
+                    <a href="results.html">Finalizar</a>    
                 </div>
             
             </div>

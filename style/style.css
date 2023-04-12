@@ -60,48 +60,92 @@ button{
     height: 100%
 
 }
-#score{
-    height: 25px;
+#score-row{
+    display: flex;
     background-color: deeppink;
 }
+
+h1, p{
+    text-align: center;
+}
+
 #lifebar{
-    height: 5px;
+    height: 15px;
     background-color: pink;
+}
+#lifebar-area{
+    display: flex;
+}
+.life{
+    width: 10% !important;
+    height: 5px;
+    margin: 5px;
+    background-color: darkorange;
+}
+.life-empty{
+    width: 10% !important;
+    height: 5px;
+    margin: 5px;
+    background-color: firebrick;
 }
 
 #container-show{
     background-color: brown;
     height: 50%;
 }
+
 #question{
-    height: 200px;
-    background-color: cyan;
+    padding: 20px 0;
+    background-color: greenyellow;
+    text-align: center;
 }
+.question-item{
+    font-size: 5em;
+    margin: 20px;
+}
+
 #timer{
-    height: 5px;
+    height: 15px;
     background-color: magenta;
-    
+    padding: 5px 0;
+}
+#timebar{
+    background-color: bisque;
+    height: 5px;
+}
+#timebar-filled{
+    background-color: red;
+    margin: 2px 0;
+    width: 60% !important;
+    height: 5px;
 }
 #answers{
-    height: 100px;
     background-color: yellowgreen;
 
+    display: flex;
+}
+.answer-item{
+    margin: 5px 15px;
+    padding: 10px 0;
+    background-color: blue;
+
+    text-align: center;
 }
 
 #container-foot{
     background-color: blueviolet;
-    width: 100px;
-    height: 100px;
 }
-#answerStatus{
+#answer-status-row{
+    text-align: center;
     height: 20px;
     background-color: whitesmoke;
 }
 #finalizar{
     height: 50px;
     background-color: darkcyan;
-
+    text-align: center;
 }
+
 @media(max-width: 600px){
 
     main{
