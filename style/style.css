@@ -80,13 +80,14 @@ h1, p{
     width: 10% !important;
     height: 5px;
     margin: 5px;
-    background-color: darkorange;
+    background-color: cyan;
 }
 .life-empty{
     width: 10% !important;
     height: 5px;
     margin: 5px;
-    background-color: firebrick;
+    outline: 1px solid lime;
+    /*background-color: blue;*/
 }
 
 #container-show{

@@ -2,27 +2,31 @@ let operation = sessionStorage.getItem("gameMode");
 let operationSymbol = '';
 let title = "";
 
-let difficulty = 1;//, salt = 0;
+let difficulty = 1;
 let term1 = document.getElementById("term-1");
 let term2 = document.getElementById("term-2");
 let correctAnswer;
 let optionsAmount = 5;
 let answerOptions = [];
+
 let buttonsExist = false;
+let lifebarExist = false;
 
 let player = {
-
+    
     level: 1,
     score: 0,
     lives: 10,
     questionAmount: 0,
     correctQuestions: 0,
-
+    
 }
+
+let maxLives = player.lives;
 
 let addition = function(){
 
-    let salt = Math.pow(10, difficulty + 1) / 5;
+    let salt = Math.pow(10, (difficulty / 3) + 1) / 3;
     let value1 = getValue(salt);
     let value2 = getValue(salt);
 
@@ -69,6 +73,48 @@ let makeButtons = function(){
     }
 
     return true;
+}
+
+let fillLifebar = function(){
+
+    if(!lifebarExist){ lifebarExist = buildLifebar();}
+
+    let lifeArray = document.getElementsByClassName("life-empty");
+    
+    for(let j = 0; j < player.lives; j++){
+       
+        lifeArray[j].classList.add("life");
+        //lifeArray[0].classList.add("life");
+
+    }
+
+}
+
+let resetLifebar = function(){
+
+    let lifeArray = document.getElementsByClassName("life-empty");
+    
+    for(let j = 0; j < player.lives; j++){
+       
+        lifeArray[j].classList.remove("life");
+        //lifeArray[0].classList.add("life");
+    }
+
+}
+let buildLifebar = function(){
+
+    let lifebar = document.getElementById("lifebar-area");
+    let lifeEmpty;
+    
+    for(let i = 0; i < maxLives; i++){
+    
+        lifeEmpty = document.createElement("div");
+        lifeEmpty.className = "life-empty";
+
+        lifebar.appendChild(lifeEmpty);
+    }    
+    return true;
+    
 }
 
 let getValue = function(salt){
@@ -120,6 +166,7 @@ let verify = function(value){
     else{
 
         player.lives--;
+        resetLifebar();
         
     }
 
@@ -137,6 +184,9 @@ let makeQuestionary = function(){
 
     if(player.lives > 0){
 
+        //displayScore();
+        fillLifebar();
+        //startTimer();
         switch(operation){
             case 'addition': addition(); break;
             case 'subtraction':  addition(); break;
