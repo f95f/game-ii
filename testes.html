@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span></span>
+    <span></span>
+    <div id="answers">
+
+    </div>
+    <script>
+
+        let bd = document.getElementsByTagName("body")[0];
+        let displayQuestion = function(value1, value2, answerOptions){
+
+            document.getElementsByTagName("span")[0].innerText = value1;  
+            document.getElementsByTagName("span")[1].innerText = value2;  
+
+            let answerContainer = document.getElementById("answers");
+            let option;
+            let button;
+
+            for(let item in answerOptions){
+
+                option = document.createElement("div");
+                option.className = "answer-item";
+                
+                button = document.createElement("button");
+                button.innerText = answerOptions[item];
+                button.className = "answer-button";
+                button.addEventListener("mouseup", function(){ah("kkkkkkkkkk")});
+                
+                option.appendChild(button);
+                bd.appendChild(option);
+            }
+
+
+        }
+        let ah = function(text){
+            alert(text);
+        }
+        displayQuestion(65, 56, [12, 21, 112 , 221, 51]);   
+    </script>
+</body>
+</html>
