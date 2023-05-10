@@ -115,9 +115,8 @@ h1, p{
     height: 5px;
 }
 #timebar-filled{
-    background-color: red;
+    background-color: black;
     margin: 2px 0;
-    width: 60% !important;
     height: 5px;
 }
 #answers{

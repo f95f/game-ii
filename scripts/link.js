@@ -5,12 +5,18 @@ let title = "";
 let difficulty = 1;
 let term1 = document.getElementById("term-1");
 let term2 = document.getElementById("term-2");
+let timebar = document.getElementById("timebar-filled");
 let correctAnswer;
 let optionsAmount = 5;
 let answerOptions = [];
 
+let timebarWidth = 100;
 let buttonsExist = false;
 let lifebarExist = false;
+let timeValue = 50;
+let intervalId;
+
+let pausas = 3;
 
 let player = {
     
@@ -32,7 +38,7 @@ let addition = function(){
 
     correctAnswer = calc(value1, value2);
     answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
-    
+
     displayQuestion(value1, value2, answerOptions);
 }
 
@@ -90,17 +96,23 @@ let fillLifebar = function(){
 
 }
 
-let resetLifebar = function(){
+let reduceLife = function(){
+
+    player.lives--;
 
     let lifeArray = document.getElementsByClassName("life-empty");
-    
-    for(let j = 0; j < player.lives; j++){
-       
-        lifeArray[j].classList.remove("life");
-        //lifeArray[0].classList.add("life");
+    lifeArray[player.lives].classList.remove("life");
+
+    if(player.lives > 0){
+        
+        makeQuestionary();
+    }   
+    else{ 
+        setTimeout(makeResults, 200);
     }
 
 }
+
 let buildLifebar = function(){
 
     let lifebar = document.getElementById("lifebar-area");
@@ -159,24 +171,64 @@ let verify = function(value){
         
         difficulty++;
         player.correctQuestions++;
-        player.correctQuestions++;
         player.score = 2 * player.correctQuestions + 1;
 
+        if(difficulty > 10){ timeValue /= 1.2;}
+
+        makeQuestionary();
     }
     else{
 
-        player.lives--;
-        resetLifebar();
+        if(difficulty > 1){difficulty--;}
+        if(player.lives < 6){ timeValue *= 1.5; }
+        reduceLife();
         
     }
 
-    makeQuestionary();
 }
 
-let timeout = function(){
+let displayScore = function(){
 
-    player.lives--;
-    makeQuestionary();
+    let score = document.getElementById("score");
+    score.innerText = player.score;
+    
+    let level = document.getElementById("level");
+    level.innerText = player.level;
+
+    let pausa = document.getElementById("pausa");
+    pausa.innerHTML = pausas;
+    
+    if(pausas == 0){ pausa.setAttribute("disabled", "true");}
+  
+}
+
+let startTimer = function(){
+
+    timebarWidth = 100;
+    clearInterval(intervalId);
+    intervalId = setInterval(countDown, timeValue);
+}
+
+let pauseTimer = function(){
+
+    document.getElementById("pausa").setAttribute("disabled", "true");
+    clearInterval(intervalId);
+    pausas--;
+
+}
+
+let countDown = function(){      
+    if(timebarWidth < 1){
+
+        clearInterval(intervalId);
+        reduceLife();
+        
+    }
+    else{
+
+        timebarWidth--;
+        timebar.style.width = timebarWidth + "%";
+    }
 
 }
 
@@ -184,9 +236,10 @@ let makeQuestionary = function(){
 
     if(player.lives > 0){
 
-        //displayScore();
+        displayScore();
         fillLifebar();
-        //startTimer();
+        startTimer();
+        
         switch(operation){
             case 'addition': addition(); break;
             case 'subtraction':  addition(); break;
@@ -197,6 +250,11 @@ let makeQuestionary = function(){
     }
 
     //go to results.
+}
+
+let makeResults = function(){
+
+    alert("perdeo");
 }
 
 switch(operation){
