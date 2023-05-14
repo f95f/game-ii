@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-    <title> ♣ Game II - </title>
+    <title> ♣ Game II - Escolha </title>
 </head>
 <body>
 
@@ -21,13 +21,8 @@
                         <span id = "score">0</span>
                     </div>
 
-                    <div id="bonus-area">
-                        <h2>Pausar</h2>
-                        <button id = "pausa" onclick = "pauseTimer()"></button>
-                    </div>
-
                     <div id="level-area">
-                        <h2>Nível</h2>
+                        <h2>Questão</h2>
                         <span id = "level">0</span>
                     </div>
 
@@ -38,6 +33,10 @@
                 </h1>
                 
                 <p>Escolha a resposta correta para as operações abaixo:</p>
+
+                <div id="bonus-area">
+                    <button id = "pausa" onclick = "pauseTimer()">||</button>
+                </div>
 
                 <div id="lifebar">
 
@@ -81,7 +80,7 @@
                 </div>
 
                 <div id = "finalizar">
-                    <a href="results.html">Finalizar</a>    
+                    <button onclick = "makeResults()">Finalizar</button>    
                 </div>
             
             </div>

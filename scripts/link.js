@@ -23,7 +23,7 @@ let player = {
     level: 1,
     score: 0,
     lives: 10,
-    questionAmount: 0,
+    questionAmount: 1,
     correctQuestions: 0,
     
 }
@@ -189,17 +189,16 @@ let verify = function(value){
 
 let displayScore = function(){
 
+    let pausa = document.getElementById("pausa");
+    pausa.innerHTML = pausas + "x ⏸️";
+    if(pausas > 0){ pausa.disabled = false; }
+
     let score = document.getElementById("score");
     score.innerText = player.score;
     
     let level = document.getElementById("level");
-    level.innerText = player.level;
+    level.innerText = player.questionAmount;
 
-    let pausa = document.getElementById("pausa");
-    pausa.innerHTML = pausas;
-    
-    if(pausas == 0){ pausa.setAttribute("disabled", "true");}
-  
 }
 
 let startTimer = function(){
@@ -239,7 +238,7 @@ let makeQuestionary = function(){
         displayScore();
         fillLifebar();
         startTimer();
-        
+
         switch(operation){
             case 'addition': addition(); break;
             case 'subtraction':  addition(); break;
@@ -253,8 +252,10 @@ let makeQuestionary = function(){
 }
 
 let makeResults = function(){
+    
+    sessionStorage.setItem("player", player);
+    window.location.href = "results.html";
 
-    alert("perdeo");
 }
 
 switch(operation){
@@ -263,19 +264,22 @@ switch(operation){
         title = "Adição"; 
         operationSymbol = '+';
         //addition();
-    break;
+        break;
         
     case 'subtraction':
         title = "Subtração";
-    break;
-    
+        operationSymbol = '-';
+        break;
+        
     case 'multiplication':
         title = "Multiplicação";    
+        operationSymbol = 'x';
         
-    break;
-    
+        break;
+        
     case 'division':
         title = "Divisão";    
+        operationSymbol = '÷';
     break;
 }
 
