@@ -150,10 +150,17 @@ let calc = function(value1, value2){
 let makeOptions = function(correctAnswer, optionsAmount, salt){
 
     let answerOptions = [];
-    let loop = false;
+    let repeatCount = 0;
     let value1, value2;
 
     for(let i = 0; i < optionsAmount; i++){
+        
+        repeatCount++;
+
+        if(repeatCount > 5 * optionsAmount){
+            
+            window.location.href = "error.html";
+        } // Will quit the game in case of too many loops.
 
         value1 = getValue(salt);
         value2 = getValue(salt);
@@ -174,7 +181,6 @@ let makeOptions = function(correctAnswer, optionsAmount, salt){
             }
         }
             
-
     } 
 
     answerOptions[Math.floor(Math.random() * optionsAmount)] = correctAnswer;
@@ -183,7 +189,6 @@ let makeOptions = function(correctAnswer, optionsAmount, salt){
 
     }
 
- 
     return answerOptions;
 
 }
@@ -196,9 +201,12 @@ let verify = function(value){
         
         difficulty++;
         player.correctQuestions++;
-        player.score = 2 * player.correctQuestions + 1;
+        player.score = 20 * player.correctQuestions + 1;
 
+        if(!(player.correctQuestions % 8) && pausas < 10){ pausas++; }
+        if(!(player.correctQuestions % 10) && player.lives < 10){ player.lives++; }
         if(difficulty > 10){ timeValue /= 1.2;}
+
         makeQuestionary();
     }
     else{
