@@ -1,5 +1,6 @@
 let finalRating;
-let player = sessionStorage.getItem("player");
+let transfer = sessionStorage.getItem("player");
+let player = JSON.parse(transfer);
 
 let setValues = function(){
     
@@ -16,5 +17,10 @@ let setValues = function(){
 }
 
 setValues();
-alert(finalRating);
+document.getElementById("rating").innerText = finalRating;
+document.getElementById("mode").innerText = player.mode;
+document.getElementById("correct-answers").innerText = player.correctQuestions;
+document.getElementById("total-answers").innerText = player.questionAmount;
+document.getElementById("final-score").innerText = player.score ;
 sessionStorage.clear();
+

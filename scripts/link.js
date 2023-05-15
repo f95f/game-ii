@@ -23,6 +23,7 @@ let player = {
     level: 1,
     score: 0,
     lives: 10,
+    mode: '',
     questionAmount: 1,
     correctQuestions: 0,
     
@@ -252,8 +253,9 @@ let makeQuestionary = function(){
 }
 
 let makeResults = function(){
-    
-    sessionStorage.setItem("player", player);
+
+    let transfer = JSON.stringify(player);
+    sessionStorage.setItem("player", transfer);
     window.location.href = "results.html";
 
 }
@@ -262,23 +264,27 @@ switch(operation){
 
     case 'addition':
         title = "Adição"; 
+        player.mode = "Adição";
         operationSymbol = '+';
         //addition();
         break;
         
     case 'subtraction':
         title = "Subtração";
+        player.mode = "Subtração";
         operationSymbol = '-';
         break;
         
     case 'multiplication':
         title = "Multiplicação";    
+        player.mode = "Multiplicação";
         operationSymbol = 'x';
         
         break;
         
     case 'division':
         title = "Divisão";    
+        player.mode = "Divisão";
         operationSymbol = '÷';
     break;
 }

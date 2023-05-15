@@ -11,7 +11,7 @@ main{
     width: 600px;
     height: 600px;
     background-color: red;
-    margin: auto;
+    margin: auto;   
     padding: 20px;
 
 }
@@ -23,9 +23,6 @@ main{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-}
-
-.item{
 }
 
 button{
@@ -50,6 +47,10 @@ button{
 /* ~~ Base ~~ */
 #container-game{
     background-color: lime;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 #container-game div{
     width: 100%;
@@ -57,18 +58,15 @@ button{
 
 #container-head{
     background-color: aqua;
-    height: 100%
-
 }
 #score-row{
     display: flex;
     background-color: deeppink;
 }
 
-h1, p{
+h1, h2, p{
     text-align: center;
 }
-
 #lifebar{
     height: 15px;
     background-color: pink;
@@ -87,18 +85,17 @@ h1, p{
     height: 5px;
     margin: 5px;
     outline: 1px solid lime;
-    /*background-color: blue;*/
 }
 
 #container-show{
     background-color: brown;
-    height: 50%;
 }
 
 #question{
     padding: 20px 0;
     background-color: greenyellow;
     text-align: center;
+    flex: 1;
 }
 .question-item{
     font-size: 5em;
@@ -106,11 +103,13 @@ h1, p{
 }
 
 #timer{
+    margin-top: auto;
     height: 15px;
     background-color: magenta;
     padding: 5px 0;
 }
 #timebar{
+    
     background-color: bisque;
     height: 5px;
 }
@@ -121,29 +120,64 @@ h1, p{
 }
 #answers{
     background-color: yellowgreen;
-
     display: flex;
 }
 .answer-item{
     margin: 5px 15px;
     padding: 10px 0;
     background-color: blue;
-
+    
     text-align: center;
 }
 
 #container-foot{
+    margin-top: auto;
     background-color: blueviolet;
 }
-#answer-status-row{
+#answer-status-row{ 
     text-align: center;
-    height: 20px;
+    height: 40px;
     background-color: whitesmoke;
 }
 #finalizar{
+    
     height: 50px;
     background-color: darkcyan;
     text-align: center;
+}
+
+/* ~~ Resultados ~~ */
+#rating-row{
+    width: 100%;
+    background-color: cyan;
+}
+#rating{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    background-color: green;
+    text-align: center;
+    margin: auto;
+}
+
+#final-score-row{
+    width: 100%;
+    height: 180px;
+    line-height: 180px;
+    background-color: cyan;
+}
+#final-score{
+    display: block;
+    background-color: green;
+    text-align: center;
+    margin: auto;
+}
+
+.button{
+    display: block; 
+    margin: auto;   
+    text-align: center;
+    text-decoration: none;
 }
 
 @media(max-width: 600px){
