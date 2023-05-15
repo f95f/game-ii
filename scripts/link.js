@@ -7,7 +7,7 @@ let term1 = document.getElementById("term-1");
 let term2 = document.getElementById("term-2");
 let timebar = document.getElementById("timebar-filled");
 let correctAnswer;
-let optionsAmount = 5;
+let optionsAmount = 4;
 let answerOptions = [];
 
 let timebarWidth = 100;
@@ -150,16 +150,40 @@ let calc = function(value1, value2){
 let makeOptions = function(correctAnswer, optionsAmount, salt){
 
     let answerOptions = [];
+    let loop = false;
+    let value1, value2;
+
     for(let i = 0; i < optionsAmount; i++){
 
-        let value1 = getValue(salt);
-        let value2 = getValue(salt);
+        value1 = getValue(salt);
+        value2 = getValue(salt);
 
         answerOptions[i] = calc(value1, value2);
+        
+        if(answerOptions[i] == correctAnswer){
+            i--;
+        }
+        else{
+
+            for(let j = 0; j < i; j++){
+                
+                if(answerOptions[j] == answerOptions[i]){
+                    i--;
+                }
+                
+            }
+        }
+            
+
     } 
 
     answerOptions[Math.floor(Math.random() * optionsAmount)] = correctAnswer;
     
+    for(let i = 0; i < optionsAmount; i++){
+
+    }
+
+ 
     return answerOptions;
 
 }
@@ -175,13 +199,13 @@ let verify = function(value){
         player.score = 2 * player.correctQuestions + 1;
 
         if(difficulty > 10){ timeValue /= 1.2;}
-
         makeQuestionary();
     }
     else{
 
         if(difficulty > 1){difficulty--;}
         if(player.lives < 6){ timeValue *= 1.5; }
+
         reduceLife();
         
     }
