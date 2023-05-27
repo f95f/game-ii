@@ -98,7 +98,7 @@ h1, h2, p{
     flex: 1;
 }
 .question-item{
-    font-size: 8em;
+    font-size: 6em;
     margin: 20px;
 }
 
@@ -130,7 +130,6 @@ h1, h2, p{
 }
 
 #container-foot{
-    margin-top: auto;
     background-color: blueviolet;
 }
 #answer-status-row{ 
