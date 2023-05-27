@@ -33,14 +33,68 @@ let maxLives = player.lives;
 
 let addition = function(){
 
-    let salt = Math.pow(10, (difficulty / 3) + 1) / 3;
+    let salt = Math.pow(5, (difficulty / 3) + 1) / 3;
+    let value1 = getValue(salt);
+    let value2 = getValue(salt);
+    
+    correctAnswer = calc(value1, value2);
+    answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
+    
+    displayQuestion(value1, value2, answerOptions);
+}
+
+let subtraction = function(){
+
+    let salt = (Math.pow(3, (difficulty / 3) + 1) / 3) + 8;
+    let value1 = getValue(salt);
+    let value2 = getValue(salt);
+    
+    correctAnswer = calc(value1, value2);
+    answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
+    
+    displayQuestion(value1, value2, answerOptions);
+}
+
+let multiplication = function(){
+    
+    let salt;
+    if(difficulty <= 10){  salt = difficulty + 10; }
+    else if(difficulty < 20){           salt = (difficulty - 10) * difficulty; }
+
     let value1 = getValue(salt);
     let value2 = getValue(salt);
 
     correctAnswer = calc(value1, value2);
     answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
-
+    
     displayQuestion(value1, value2, answerOptions);
+
+}
+
+let division = function(){
+    
+    let salt = (Math.pow(2, (difficulty / 3) + 1) / 3) + 20;
+    let value1;
+    let value2;
+
+    let auxAccumulator;
+
+    do{
+
+        value1 = getValue(salt) + 1;
+        value2 = getValue(salt) + 1;
+        
+        
+        correctAnswer = calc(value1, value2);
+        answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
+        
+        for(let i = 0; i < optionsAmount; i++){ alert(Math.floor(answerOptions[i])); Math.floor(answerOptions[i]); }
+    
+    }
+    while((value1 % value2));
+    
+    displayQuestion(value1, value2, answerOptions);
+
 }
 
 let displayQuestion = function(value1, value2, answerOptions){
@@ -170,6 +224,7 @@ let makeOptions = function(correctAnswer, optionsAmount, salt){
         if(answerOptions[i] == correctAnswer){
             i--;
         }
+        /*
         else{
 
             for(let j = 0; j < i; j++){
@@ -180,6 +235,7 @@ let makeOptions = function(correctAnswer, optionsAmount, salt){
                 
             }
         }
+        */
             
     } 
 
@@ -195,26 +251,27 @@ let makeOptions = function(correctAnswer, optionsAmount, salt){
 
 let verify = function(value){
     
+    clearInterval(intervalId);
     player.questionAmount++;
 
     if(value == correctAnswer){
         
         difficulty++;
         player.correctQuestions++;
-        player.score = 20 * player.correctQuestions + 1;
+        player.score = 2 * player.correctQuestions + 1;
 
         if(!(player.correctQuestions % 8) && pausas < 10){ pausas++; }
         if(!(player.correctQuestions % 10) && player.lives < 10){ player.lives++; }
-        if(difficulty > 10){ timeValue /= 1.2;}
+        if(difficulty > 10){ timeValue /= 1.1;}
 
-        makeQuestionary();
+        setTimeout(makeQuestionary, 500);
     }
     else{
 
-        if(difficulty > 1){difficulty--;}
+        if(difficulty > 5){difficulty--;}
         if(player.lives < 6){ timeValue *= 1.5; }
 
-        reduceLife();
+        setTimeout(reduceLife, 500);
         
     }
 
@@ -274,9 +331,9 @@ let makeQuestionary = function(){
 
         switch(operation){
             case 'addition': addition(); break;
-            case 'subtraction':  addition(); break;
-            case 'multiplication': addition(); break;          
-            case 'division': addition(); break;
+            case 'subtraction':  subtraction(); break;
+            case 'multiplication': multiplication(); break;          
+            case 'division': division(); break;
         }
         
     }
