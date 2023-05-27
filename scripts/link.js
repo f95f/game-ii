@@ -73,23 +73,37 @@ let multiplication = function(){
 
 let division = function(){
     
-    let salt = (Math.pow(2, (difficulty / 3) + 1) / 3) + 20;
+    let salt = (Math.pow(5, (difficulty / 3) + 1)) + 100;
+    
     let value1;
-    let value2;
-
-    let auxAccumulator;
+    let value2 = Math.floor(Math.random() * 5) + 1;
+    
+    let auxVerifier;
 
     do{
-
+        auxVerifier = true;
         value1 = getValue(salt) + 1;
-        value2 = getValue(salt) + 1;
-        
         
         correctAnswer = calc(value1, value2);
         answerOptions = makeOptions(correctAnswer, optionsAmount, salt);
         
-        for(let i = 0; i < optionsAmount; i++){ alert(Math.floor(answerOptions[i])); Math.floor(answerOptions[i]); }
-    
+        for(let i = 0; i < optionsAmount; i++){
+
+            if(!isFinite(answerOptions[i])){
+
+                answerOptions[i] = getValue(salt) + 1;
+            }
+
+            if(answerOptions[i] != correctAnswer){ 
+                
+                answerOptions[i] = Math.floor(answerOptions[i] * 10);
+                
+                if(getValue(2) == 1){answerOptions[i] += correctAnswer;}
+                if(answerOptions[i] == correctAnswer){ answerOptions[i] -= correctAnswer; }
+                
+            }
+        }
+
     }
     while((value1 % value2));
     
@@ -253,16 +267,16 @@ let verify = function(value){
     
     clearInterval(intervalId);
     player.questionAmount++;
-
+    
     if(value == correctAnswer){
         
         difficulty++;
         player.correctQuestions++;
-        player.score = 2 * player.correctQuestions + 1;
+        //player.score = 2 * player.correctQuestions + 1;
 
         if(!(player.correctQuestions % 8) && pausas < 10){ pausas++; }
         if(!(player.correctQuestions % 10) && player.lives < 10){ player.lives++; }
-        if(difficulty > 10){ timeValue /= 1.1;}
+        if(difficulty > 10){ timeValue /= 1.04;}
 
         setTimeout(makeQuestionary, 500);
     }
@@ -275,6 +289,14 @@ let verify = function(value){
         
     }
 
+}
+
+let increaseScore = function(){
+
+    player.score = 2 * player.correctQuestions + 1;
+
+    let scoreEarnedArea = document.getElementById("score-earned"); 
+    
 }
 
 let displayScore = function(){
