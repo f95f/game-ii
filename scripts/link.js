@@ -1,6 +1,7 @@
 let operation = sessionStorage.getItem("gameMode");
 let operationSymbol = '';
 let title = "";
+let answerStatus = "";
 
 let difficulty = 1;
 let term1 = document.getElementById("term-1");
@@ -105,7 +106,7 @@ let division = function(){
         }
 
     }
-    while((value1 % value2));
+    while(value1 % value2);
     
     displayQuestion(value1, value2, answerOptions);
 
@@ -270,18 +271,20 @@ let verify = function(value){
     
     if(value == correctAnswer){
         
+        setStatus(true);
         difficulty++;
         player.correctQuestions++;
-        //player.score = 2 * player.correctQuestions + 1;
+        increaseScore();
 
         if(!(player.correctQuestions % 8) && pausas < 10){ pausas++; }
         if(!(player.correctQuestions % 10) && player.lives < 10){ player.lives++; }
         if(difficulty > 10){ timeValue /= 1.04;}
 
-        setTimeout(makeQuestionary, 500);
+        setTimeout(makeQuestionary, 500);   
     }
     else{
 
+        setStatus(false);
         if(difficulty > 5){difficulty--;}
         if(player.lives < 6){ timeValue *= 1.5; }
 
@@ -291,12 +294,50 @@ let verify = function(value){
 
 }
 
+let setStatus = function(status){
+
+    let answerStatus = document.getElementById("answer-status");
+
+    fadeInElement(answerStatus);
+    if(status){
+
+        answerStatus.style.color = "blue";
+        answerStatus.innerText = 'Correto';
+        
+    }
+    else{
+        
+        answerStatus.style.color = "red";
+        answerStatus.innerText = 'Errado!';
+        
+    }
+    setTimeout(function(){fadeOutElement(answerStatus)}, 1000);
+
+}
+
 let increaseScore = function(){
 
-    player.score = 2 * player.correctQuestions + 1;
+    let score = Math.floor((difficulty / 10)) + 2;
+    player.score += score;
 
     let scoreEarnedArea = document.getElementById("score-earned"); 
-    
+    scoreEarnedArea.innerText = '+' + score;
+    fadeInElement(scoreEarnedArea);
+
+    setTimeout(function(){fadeOutElement(scoreEarnedArea)}, 500);
+}
+
+let fadeOutElement = function(DOMElement){
+
+    DOMElement.style.transition = "all 1s";
+    DOMElement.style.opacity = 0;
+
+}
+let fadeInElement = function(DOMElement){
+
+    DOMElement.style.transition = "all .08s";
+    DOMElement.style.opacity = 1;
+
 }
 
 let displayScore = function(){
