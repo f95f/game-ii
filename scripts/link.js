@@ -343,7 +343,7 @@ let fadeInElement = function(DOMElement){
 let displayScore = function(){
 
     let pausa = document.getElementById("pausa");
-    pausa.innerHTML = pausas + "x ⏸️";
+    pausa.innerHTML = pausas + "x <strong>P</strong>";
     if(pausas > 0){ pausa.disabled = false; }
 
     let score = document.getElementById("score");

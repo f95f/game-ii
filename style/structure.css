@@ -27,7 +27,6 @@ main{
 button{
     height: 100%;
     width: 100%;
-    background-color: aqua; 
 }
 
 #addButton{
@@ -45,7 +44,6 @@ button{
 
 /* ~~ Base ~~ */
 #container-game{
-    background-color: lime;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -55,12 +53,8 @@ button{
     width: 100%;
 }
 
-#container-head{
-    background-color: aqua;
-}
 #score-row{
     display: flex;
-    background-color: deeppink;
 }
 
 h1, h2, p{
@@ -68,7 +62,6 @@ h1, h2, p{
 }
 #lifebar{
     height: 15px;
-    background-color: pink;
 }
 #lifebar-area{
     display: flex;
@@ -77,22 +70,15 @@ h1, h2, p{
     width: 10% !important;
     height: 5px;
     margin: 5px;
-    background-color: cyan;
 }
 .life-empty{
     width: 10% !important;
     height: 5px;
     margin: 5px;
-    outline: 1px solid lime;
-}
-
-#container-show{
-    background-color: brown;
 }
 
 #question{
     padding: 20px 0;
-    background-color: greenyellow;
     text-align: center;
     flex: 1;
 }
@@ -102,43 +88,29 @@ h1, h2, p{
 }
 
 #timer{
-    margin-top: auto;
-    height: 15px;
-    background-color: magenta;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 #timebar{
-    
-    background-color: bisque;
     height: 5px;
 }
 #timebar-filled{
-    background-color: black;
     margin: 2px 0;
     height: 5px;
 }
 #answers{
-    background-color: yellowgreen;
     display: flex;
 }
 .answer-item{
     margin: 15px 15px;
-    background-color: blue;
     text-align: center;
 }
 
-#container-foot{
-    background-color: blueviolet;
-}
 #answer-status-row{ 
     text-align: center;
     height: 30px;
-    background-color: whitesmoke;
 }
 #finalizar{
-    
     height: 50px;
-    background-color: darkcyan;
     text-align: center;
 }
 
@@ -152,10 +124,7 @@ h1, h2, p{
     margin: auto;
 }
 
-#final-score-row{
-    width: 100%;
-    height: 180px;
-}
+
 #final-score{
     display: block;
     margin: auto;
