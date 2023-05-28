@@ -68,12 +68,12 @@ h1, h2, p{
 }
 .life{
     width: 10% !important;
-    height: 5px;
+    height: 3px;
     margin: 5px;
 }
 .life-empty{
     width: 10% !important;
-    height: 5px;
+    height: 3px;
     margin: 5px;
 }
 
@@ -83,7 +83,6 @@ h1, h2, p{
     flex: 1;
 }
 .question-item{
-    font-size: 6em;
     margin: 20px;
 }
 
@@ -91,11 +90,11 @@ h1, h2, p{
     padding: 10px 0;
 }
 #timebar{
-    height: 5px;
+    height: 3px;
 }
 #timebar-filled{
     margin: 2px 0;
-    height: 5px;
+    height: 3px;
 }
 #answers{
     display: flex;

@@ -8,24 +8,31 @@
     --highlight: #F280BF;
     --highlight: #5f5aff;
 
+    --highlight-positive: #00b07b;
+    --highlight-negative: #b25900;
+
     --common-neumorphic-button: 
-        -5px -5px 8px var(--highlightGray),
-        5px 5px 8px var(--shadowGray), 
+        -2px -2px 8px var(--highlightGray),
+        2px 2px 8px var(--shadowGray), 
         inset 1px 1px 2px var(--highlightGray),
         inset -1px -1px 2px var(--shadowGray); 
     
     --common-neumorphic-button-hover: 
-        -2px -2px 4px var(--highlightGray),
-        2px 2px 4px var(--shadowGray), 
-        inset 1px 1px 4px var(--highlightGray),
-        inset -1px -1px 4px var(--shadowGray); 
+        -1px -1px 2px var(--highlightGray),
+        1px 1px 2px var(--shadowGray), 
+        inset 1px 1px 2px var(--highlightGray),
+        inset -1px -1px 2px var(--shadowGray); 
 
     --common-neumorphic-button-pressed: 
         2px 2px 4px var(--highlightGray),
         -2px -2px 4px var(--shadowGray), 
         inset -1px -1px 4px var(--highlightGray),
         inset 1px 1px 4px var(--shadowGray); 
-
+    
+    --common-neumorphic-text:
+        2px 2px 5px var(--shadowGray),
+        -2px -2px 5px var(--highlightGray);
+    
     --floating-panel:
         -4px -4px 16px var(--highlightGray), 
         5px 5px 12px var(--shadowGray); 
@@ -53,29 +60,41 @@ main{
 
 h3, h4{
     text-align: center;
+    color: var(--darkGray);
     font-family: 'Poppins', sans-serif;
-    font-weight: normal;
+    font-weight: 100;
     
     margin: 0;
 }
 h4{
-    font-size: .9em;
+    font-size: 1em;
+}
+strong{
+    color: var(--highlight);
 }
 #title-operation{
+    text-shadow: var(--common-neumorphic-text);
     color: var(--highlight); 
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: normal;
-    font-size: 3em;
+    font-size: 2em;
+}
+
+#score-earned{
+    color: var(--highlight-positive);
 }
 
 #pausa{
     background-color: var(--backgroundGray);
-    box-shadow:  var(--floating-panel);
+    box-shadow:  
+        var(--floating-panel),
+        0 0 10px var(--highlight);
     width: 50px;
     height: 50px;
     border-radius: 50px;
     border: none;
+    outline: 2px solid var(--highlight);
     margin: 10px;
     font-size: .8em;
     font-family: 'Roboto', sans-serif;
@@ -83,12 +102,17 @@ h4{
     transition: all .2s;
 }
 #pausa:hover{
+    outline: none;
+    box-shadow: none;
+    box-shadow: var(--floating-panel);
     background-color: var(--highlightGray);
 }
 #pausa:disabled{
+    outline: none;
     box-shadow: var(--common-neumorphic-inset);
 }
 #pausa:disabled:hover{
+    outline: none;
     background-color: var(--backgroundGray);
 }
 
@@ -103,8 +127,21 @@ h4{
 .life-empty{
     box-shadow: var(--common-neumorphic-inset);
 }
+#question{
+    font-family: 'Exo 2', sans-serif;
+    color: var(--darkGray)
+}
+#operation-symbol{
+    font-size: 3em;
+    vertical-align: super;
+    color: var(--shadowGray);
+}
+.question-item{
+    font-size: 6em;
+    text-shadow: var(--common-neumorphic-text);
+}
 #timer{
-    background-color: var(--backgroundGray);  
+    background-color: var(--backgroundGray);
 }
 #timebar{
     box-shadow: var(--common-neumorphic-inset);
@@ -125,18 +162,26 @@ h4{
     min-height: 50px;
     min-width: 50px;
     border-radius: 100px;
-    line-height: 50px;
+    
+    line-height: 100px;
     text-align: center;
     font-size: 2em;
     color: var(--darkGray);
+    font-family: 'Exo 2', sans-serif;
+    
+    
     transition: all .2s;
-
+    
 }
 .answer-button:hover{
     box-shadow: var(--common-neumorphic-button-hover);
+    background-color: var(--highlight);
+    color: var(--backgroundGray);
 }
 .answer-button:active{
     box-shadow: var(--common-neumorphic-button-pressed);
+    background-color: var(--backgroundGray);
+    color: var(--darkGray);
 }
 
 h1{
@@ -150,12 +195,23 @@ h2{
     font-size: 1.2em;
 }
 
+#container-foot{
+    padding: 20px 0;
+}
+
+#answer-status{
+    font-family: 'Poppins',sans-serif;
+}
+
 #finalizar button{
     box-shadow: var(--common-neumorphic-button);
     max-width: 200px;
     height: 50px;
     border-radius: 50px;
     line-height: 50px;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    color: var(--darkGray);
     border: none;
     background-color: var(--backgroundGray);
 }
@@ -165,6 +221,9 @@ h2{
 #finalizar button:active{
     box-shadow: var(--common-neumorphic-button-pressed);
 }
+
+/* --- Results page --- */
+
 #rating{
     line-height: 50px;
     text-align: center;

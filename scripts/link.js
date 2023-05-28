@@ -301,13 +301,13 @@ let setStatus = function(status){
     fadeInElement(answerStatus);
     if(status){
 
-        answerStatus.style.color = "blue";
+        answerStatus.style.color = "var(--highlight-positive)";
         answerStatus.innerText = 'Correto';
         
     }
     else{
         
-        answerStatus.style.color = "red";
+        answerStatus.style.color = "var(--highlight-negative)";
         answerStatus.innerText = 'Errado!';
         
     }
