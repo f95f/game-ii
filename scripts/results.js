@@ -1,4 +1,9 @@
 let finalRating;
+
+let root = document.querySelector(":root");
+let highlightColor = sessionStorage.getItem("highlightColor");
+root.style.setProperty("--highlight", highlightColor);
+
 let transfer = sessionStorage.getItem("player");
 let player = JSON.parse(transfer);
 
@@ -12,7 +17,6 @@ let setValues = function(){
     else if(player.score < 1000){ finalRating = '!'}
     else if(player.score < 10000){ finalRating = '!!'}
     else{ finalRating = '☠️'}
-    
 
 }
 

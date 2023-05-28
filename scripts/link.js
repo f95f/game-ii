@@ -1,7 +1,9 @@
 let operation = sessionStorage.getItem("gameMode");
+let root = document.querySelector(":root");
 let operationSymbol = '';
 let title = "";
 let answerStatus = "";
+let highlightColor = "";
 
 let difficulty = 1;
 let term1 = document.getElementById("term-1");
@@ -408,6 +410,7 @@ let makeResults = function(){
 
     let transfer = JSON.stringify(player);
     sessionStorage.setItem("player", transfer);
+    sessionStorage.setItem("highlightColor", highlightColor);
     window.location.href = "results.html";
 
 }
@@ -418,19 +421,21 @@ switch(operation){
         title = "Adição"; 
         player.mode = "Adição";
         operationSymbol = '+';
-        //addition();
+        highlightColor = "yellow";
         break;
         
     case 'subtraction':
         title = "Subtração";
         player.mode = "Subtração";
         operationSymbol = '-';
+        highlightColor = "yellow";
         break;
         
     case 'multiplication':
         title = "Multiplicação";    
         player.mode = "Multiplicação";
         operationSymbol = 'x';
+        highlightColor = "red";
         
         break;
         
@@ -438,10 +443,12 @@ switch(operation){
         title = "Divisão";    
         player.mode = "Divisão";
         operationSymbol = '÷';
+        highlightColor = "yellow";
     break;
 }
 
 makeQuestionary();
 document.title += " " + title;
+root.style.setProperty('--highlight', highlightColor);
 document.getElementById("title-operation").innerText = title;
 document.getElementById("operation-symbol").innerText = operationSymbol;
